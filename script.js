@@ -90,7 +90,19 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  let passwordLength = prompt("Please enter your password length between 8 and 128: "); 
 
+  if (passwordLength === null) {
+    alert("Error!! User cancelled the password genterator."); 
+    return; // Exit the function if the input is null // 
+  }
+  
+  if (isNaN(passwordLength) || passwordLength < 8 || passwordLength < 128) {
+    alert ("Invalid password length. Please enter a password between 8 and 128 characters."); 
+    return; // Exit the function if input is invalid // 
+  }
+// If none of the above happends it means the password is valid // 
+return passwordLength;
 }
 
 // Function for getting a random element from an array
@@ -99,7 +111,7 @@ function getRandom(arr) {
 }
 
 // Function to generate password with user input
-function generatePassword() {
+function getPasswordOptions() {
 
 }
 

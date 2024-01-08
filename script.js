@@ -107,8 +107,18 @@ return passwordLength;
 
 // Function for getting a random element from an array
 function getRandom(arr) {
+  let random = specialCharacters[Math.floor(Math.random() * specialCharacters.length)];} 
 
-}
+function getRandom(arr) {
+  let random = numericCharacters[Math.floor(Math.random() * numericCharacters.length)];}
+
+function getRandom(arr) {
+ let random = lowerCasedCharacters[Math.floor(Math.random() * lowerCasedCharacters.length)];}
+
+function getRandom(arr) {
+ let random = upperCasedCharacters[Math.floor(Math.random() * upperCasedCharacters.length)];}
+
+return ({content : `${random}`});
 
 // Function to generate password with user input
 function getPasswordOptions() {
@@ -120,7 +130,7 @@ var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var password = getPasswordOptions();
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;

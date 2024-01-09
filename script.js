@@ -90,39 +90,51 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  let passwordLength = prompt("Please enter your password length between 8 and 128: "); 
+  let userArray = []
+  let passwordLength = prompt("Please enter your password length between 8 and 128: ");
 
   if (passwordLength === null) {
-    alert("Error!! User cancelled the password genterator."); 
-    return; // Exit the function if the input is null // 
+    alert("Error!! User cancelled the password genterator.");
+    return getPasswordOptions(); // Exit the function if the input is null // 
   }
-  
-  if (isNaN(passwordLength) || passwordLength < 8 || passwordLength < 128) {
-    alert ("Invalid password length. Please enter a password between 8 and 128 characters."); 
-    return; // Exit the function if input is invalid // 
+
+  if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
+    alert("Invalid password length. Please enter a password between 8 and 128 characters.");
+    return getPasswordOptions(); // Exit the function if input is invalid // 
   }
-// If none of the above happends it means the password is valid // 
-return passwordLength;
+
+  let lowerOptions = confirm("Would you like lower case characters?");
+  if (lowerOptions) {
+    userArray = userArray.concat(lowerCasedCharacters)
+  }
+  let upperOptions = confirm("Would you like upper case characters?");
+  if (upperOptions) {
+    userArray = userArray.concat(upperCasedCharacters)
+  }
+  let numberOptions = confirm("Would you like numbers?");
+  if (numberOptions) {
+    userArray = userArray.concat(numericCharacters)
+  }
+  let specialOptions = confirm("Would you like special characters?");
+  if (specialOptions) {
+    userArray = userArray.concat(specialCharacters)
+  }
+  console.log (userArray)
+  // If none of the above happends it means the password is valid // 
+  return {passwordLength, userArray};
 }
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-  let random = specialCharacters[Math.floor(Math.random() * specialCharacters.length)];} 
+  let random = arr[Math.floor(Math.random() * arr.length)];
+}
 
-function getRandom(arr) {
-  let random = numericCharacters[Math.floor(Math.random() * numericCharacters.length)];}
-
-function getRandom(arr) {
- let random = lowerCasedCharacters[Math.floor(Math.random() * lowerCasedCharacters.length)];}
-
-function getRandom(arr) {
- let random = upperCasedCharacters[Math.floor(Math.random() * upperCasedCharacters.length)];}
-
-return ({content : `${random}`});
+// return ({ content: `${random}` });
 
 // Function to generate password with user input
-function getPasswordOptions() {
-
+function generatePassword() {
+  let userOptions = getPasswordOptions();
+  console.log(userOptions)
 }
 
 // Get references to the #generate element
@@ -130,7 +142,7 @@ var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = getPasswordOptions();
+  var password = generatePassword();
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;

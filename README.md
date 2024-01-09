@@ -1,6 +1,8 @@
 # password-genorator
 
-Using more intermediate JavaScript to create a password generator
+Using more intermediate JavaScript to create a password generator.
+
+https://hannahhazel-alt.github.io/password-genorator/
 
 ## Description
 

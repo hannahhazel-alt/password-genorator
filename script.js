@@ -127,6 +127,7 @@ function getPasswordOptions() {
 // Function for getting a random element from an array
 function getRandom(arr) {
   let random = arr[Math.floor(Math.random() * arr.length)];
+  return random;
 }
 
 // return ({ content: `${random}` });
@@ -135,6 +136,12 @@ function getRandom(arr) {
 function generatePassword() {
   let userOptions = getPasswordOptions();
   console.log(userOptions)
+  let randomCharacters = ""
+  for (let i = 0; i < userOptions.passwordLength; i++){
+randomCharacters += getRandom(userOptions.userArray)
+  }
+  console.log (randomCharacters)
+  return randomCharacters;
 }
 
 // Get references to the #generate element
